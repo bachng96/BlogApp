@@ -12,6 +12,7 @@ import { SettingComponent } from './components/page/setting/setting.component';
 import { EditorComponent } from './components/page/editor/editor.component';
 import { ArticleComponent } from './components/page/article/article.component';
 import { ProfileComponent } from './components/page/profile/profile.component';
+import { MyFeedComponent } from './components/feed/my-feed.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,11 @@ import { ProfileComponent } from './components/page/profile/profile.component';
     SettingComponent,
     EditorComponent,
     ArticleComponent,
-    ProfileComponent
+    ProfileComponent,
+    MyFeedComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

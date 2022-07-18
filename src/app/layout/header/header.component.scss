@@ -1,0 +1,19 @@
+@import "../../../style/variable";
+.navbar {
+  background-color: $color-primary;
+  color: white;
+  .navbar-brand {
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: white;
+    font-weight: bold;
+  }
+  .login-wrapper {
+    color: white;
+  }
+  .nav-link {
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
