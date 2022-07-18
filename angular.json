@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BlogApp"
+    }
+  },
+  "defaultProject": "BlogApp",
+  "cli": {
+    "analytics": "7e3312bd-c47e-4167-afc0-6fa0463926ab"
+  }
 }
