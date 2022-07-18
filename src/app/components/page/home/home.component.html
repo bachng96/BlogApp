@@ -1,1 +1,55 @@
-<p>home works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="feed-box">
+        <div class="nav nav-tabs text-p-dark mt-3">
+          <span
+            class="nav-link font-weight-bold cursor-pointer ng-star-inserted"
+            [ngClass]="myFeed === true ? 'active' : ''"
+            (click)="myFeed = !myFeed"
+            >My Feed</span
+          ><span
+            class="nav-link font-weight-bold cursor-pointer"
+            [ngClass]="myFeed === true ? '' : 'active'"
+            (click)="myFeed = !myFeed"
+            >Global Feed</span
+          >
+        </div>
+        <div *ngIf="myFeed">
+          <app-my-feed></app-my-feed>
+          <app-my-feed></app-my-feed>
+          <app-my-feed></app-my-feed>
+          <app-my-feed></app-my-feed>
+        </div>
+        <div *ngIf="!myFeed">
+          <div class="search-form d-flex mt-2">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="form-control" placeholder="Search..." />
+          </div>
+          <app-my-feed></app-my-feed>
+          <app-my-feed></app-my-feed>
+          <app-my-feed></app-my-feed>
+          <app-my-feed></app-my-feed>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="tag-box shadow-lg mt-3">
+        <p class="tag-box--title">Popular tag</p>
+        <div class="tag-box--list-item">
+          <span class="badge badge-pill badge-primary tag-box--item"
+            >Primary</span
+          >
+
+          <span class="badge badge-pill badge-primary tag-box--item"
+            >Primary</span
+          >
+
+          <span class="badge badge-pill badge-primary tag-box--item"
+            >Primary</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

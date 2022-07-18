@@ -1,0 +1,23 @@
+.my-feed {
+  padding: 20px;
+}
+
+.user-infor {
+  &--avt {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  &--name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &--date-post {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+}
+.read-more {
+  font-size: 15px;
+  color: burlywood;
+}
