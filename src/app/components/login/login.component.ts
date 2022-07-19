@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
       .catch(() => (this.isInvalidInput = true));
   }
 
-  public demoAccount(): void {
+   demoAccount(): void {
     this.loginForm.setValue({
-      email: 'zelda@gmail.com',
-      password: '11111111',
+      email: 'sonbon1101@gmail.com',
+      password: 'longkiem003',
     });
   }
 }
