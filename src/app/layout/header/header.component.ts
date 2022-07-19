@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isLogin: boolean = false;
-  constructor() {}
+  showDropdown: boolean = false;
+  userName: string = '';
+
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  openSpinner(timeLoad) {
+    setTimeout(() => {}, timeLoad);
+  }
+
+  goToNewArticle(): void {
+    this.router.navigateByUrl('/new-article');
+  }
+
+  goToMyArticles(): void {
+    if (this.authService.isAuthenticated()) {
+      let localUser = JSON.parse(localStorage.getItem('user'));
+      this.userName = localUser.username;
+    }
+    this.router.navigateByUrl(`/profile/${this.userName}`);
+  }
+
+  logout(): void {
+    this.authService.logout();
+    // this.router.navigate(['..']);
+  }
+
+  logIn(): void {
+    this.router.navigateByUrl('/login');
+  }
+
+  signUp(): void {
+    this.router.navigateByUrl('/signup');
+  }
 }

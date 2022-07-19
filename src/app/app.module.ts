@@ -1,18 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './layout/header/header.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArticleCardComponent } from './layout/article-card/article-card.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { ChangeLogComponent } from './components/change-log/change-log.component';
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
+import { FavoriteArticlesComponent } from './components/profile/favorite-articles/favorite-articles.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { HomeComponent } from './components/page/home/home.component';
-import { LoginComponent } from './components/page/login/login.component';
-import { SignupComponent } from './components/page/signup/signup.component';
-import { SettingComponent } from './components/page/setting/setting.component';
-import { EditorComponent } from './components/page/editor/editor.component';
-import { ArticleComponent } from './components/page/article/article.component';
-import { ProfileComponent } from './components/page/profile/profile.component';
-import { MyFeedComponent } from './components/feed/my-feed.component';
+import { GlobalFeedComponent } from './components/home/global-feed/global-feed.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { MyFeedComponent } from './components/home/my-feed/my-feed.component';
+import { TagFeedComponent } from './components/home/tag-feed/tag-feed.component';
+import { LoginComponent } from './components/login/login.component';
+import { NewArticleComponent } from './components/new-article/new-article.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MyArticlesComponent } from './components/profile/my-articles/my-articles.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SettingComponent } from './components/setting/setting.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { PaginationComponent } from './layout/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +33,32 @@ import { MyFeedComponent } from './components/feed/my-feed.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
-    SignupComponent,
     SettingComponent,
-    EditorComponent,
-    ArticleComponent,
     ProfileComponent,
+    SignUpComponent,
+    LoginComponent,
+    PaginationComponent,
+    FooterComponent,
+    NewArticleComponent,
+    NotFoundComponent,
+    ArticleDetailComponent,
     MyFeedComponent,
+    GlobalFeedComponent,
+    ArticleCardComponent,
+    TagFeedComponent,
+    MyArticlesComponent,
+    FavoriteArticlesComponent,
+    EditArticleComponent,
+    ChangeLogComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

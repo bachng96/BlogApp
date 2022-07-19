@@ -1,19 +1,22 @@
-@import "../../../style/variable";
-.navbar {
-  background-color: $color-primary;
-  color: white;
-  .navbar-brand {
-    font-size: 22px;
-    letter-spacing: 1px;
-    color: white;
-    font-weight: bold;
-  }
-  .login-wrapper {
-    color: white;
-  }
-  .nav-link {
-    color: white;
-    font-weight: 600;
-    font-size: 18px;
-  }
+.conduit {
+  font-size: 28px;
+}
+.navUserItems {
+  display: none;
+}
+.Users:hover .navUserItems {
+  display: block;
+}
+.dropdown-item-active:active {
+  background-color: #5d99c6e6;
+}
+.label-hover:hover {
+  color: #c9d6df !important;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+}
+.nav-bar{
+  background-color: blue;
 }
