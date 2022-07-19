@@ -1,13 +1,6 @@
+<app-header></app-header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
 
-<div class="container-fluid bg-p-dark">
-  <app-header></app-header>
-</div>
-<div
-  class="banner container-fluid bg-p-light text-center py-5 text-white"
-  *ngIf="authService.isAuthenticated() === false"
->
-  <h1>InLife</h1>
-  <p>Let's share the best things together!</p>
-</div>
-<router-outlet></router-outlet>
 <app-footer></app-footer>

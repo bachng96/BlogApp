@@ -40,6 +40,8 @@ export class SettingComponent implements OnInit {
     });
 
     this.localUser = JSON.parse(localStorage.getItem('user'));
+    console.log(this.localUser);
+    
     this.userName = this.localUser.username;
 
     this.settingsService.getSettings(this.userName).subscribe((res: any) => {

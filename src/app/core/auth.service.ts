@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
 import { Profile } from './../models/profile';
-import { config } from './../config';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private user: User = null;
-
+  private apiUrl = 'https://conduit.productionready.io/api'
   constructor(private http: HttpClient, private router: Router) {}
 
   isAuthenticated(): boolean {
@@ -30,13 +29,13 @@ export class AuthService {
 
   getProfile(username: string): Observable<Profile> {
     return this.http.get(
-      config.apiUrl + `/profiles/${username}`
+      this.apiUrl + `/profiles/${username}`
     ) as Observable<Profile>;
   }
 
   signup(user) {
     return new Promise<void>((resolve, reject) => {
-      this.http.post(config.apiUrl + '/users', { user: user }).subscribe(
+      this.http.post(this.apiUrl + '/users', { user: user }).subscribe(
         (res: any) => {
           this.logUserIn(res.user);
           resolve();
@@ -55,7 +54,7 @@ export class AuthService {
 
   login(user) {
     return new Promise<void>((resolve, reject) => {
-      this.http.post(config.apiUrl + '/users/login', { user: user }).subscribe(
+      this.http.post(this.apiUrl + '/users/login', { user: user }).subscribe(
         (res: any) => {
           this.logUserIn(res.user);
           resolve();

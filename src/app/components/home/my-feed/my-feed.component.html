@@ -3,12 +3,6 @@
     <div *ngFor="let myFeed of myFeeds">
       <app-article-card [data]="myFeed"></app-article-card>
     </div>
-    <app-pagination
-      *ngIf="loadDone"
-      [totalItems]="totalItems"
-      [itemPerpage]="itemsPerPage"
-      (onPageChange)="handlePageChange($event)"
-    ></app-pagination>
   </div>
 </ng-container>
 <ng-template #noData>

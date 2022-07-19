@@ -26,7 +26,6 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp(): void {
-    // const currURL = this.router.url;
     this.authService
       .signup(this.signupForm.value)
       .then(() => {
