@@ -41,11 +41,11 @@
       </div>
     </div>
     <div class="col-lg-3 order-0 mb-4 order-lg-1 tags-grow">
-      <div class="popular-tags bg-light p-1 pb-2 shadow bg-white">
-        <h6 class="pl-1 pt-1 pb-2 border-bottom mb-1-5">Popular Tags:</h6>
-        <div class="listtags d-flex flex-wrap">
+      <div class="rounded popular-tags bg-light p-3 shadow bg-light">
+        <h6 class="pl-1 pt-1 pb-2 mb-2">Popular Tags:</h6>
+        <div class="listtags d-flex flex-column">
           <a
-            class="tag-item btn bg-warning text-white m-1 py-0 rounded-pill"
+            class="tag-item m-1 py-0 pl-1"
             *ngFor="let tag of listTags"
             (click)="openTagFeed(tag)"
             >#{{ tag }}</a
