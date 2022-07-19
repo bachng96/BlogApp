@@ -15,11 +15,4 @@
   <div *ngFor="let globalFeed of filteredFeeds">
     <app-article-card [data]="globalFeed"></app-article-card>
   </div>
-  <app-pagination
-    *ngIf="loadDone"
-    [totalItems]="totalItems"
-    [itemPerpage]="itemsPerPage"
-    (onPageChange)="handlePageChange($event)"
-    (tagFromCard)="getTagFromCard($event)"
-  ></app-pagination>
 </div>

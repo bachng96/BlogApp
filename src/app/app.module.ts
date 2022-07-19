@@ -25,7 +25,7 @@ import { MyArticlesComponent } from './components/profile/my-articles/my-article
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { PaginationComponent } from './layout/pagination/pagination.component';
+import { AuthInterceptor } from './core/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,6 @@ import { PaginationComponent } from './layout/pagination/pagination.component';
     ProfileComponent,
     SignUpComponent,
     LoginComponent,
-    PaginationComponent,
     FooterComponent,
     NewArticleComponent,
     NotFoundComponent,
@@ -59,7 +58,13 @@ import { PaginationComponent } from './layout/pagination/pagination.component';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
