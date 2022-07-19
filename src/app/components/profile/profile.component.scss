@@ -1,11 +1,32 @@
-.bg-profile{
-  background: url("https://camnang24h.net/wp-content/uploads/2018/06/anh-bia-facebook-ve-co-may-man-ba-la-bon-la-cuc-dep.jpg") no-repeat center;
+.bg-profile {
+  background: url("https://dbk.vn/uploads/ckfinder/images/1-content/background-dep-1.jpg")
+    no-repeat center;
   background-size: cover;
+  position: relative;
+  height: 250px;
+  border-radius: 5px;
 }
-.btnEdit{
+.btnEdit {
   background-color: #ff5334;
 }
-.btnEdit:hover{
+.btnEdit:hover {
   background-color: #fc6b51;
-
+}
+.avatar-user {
+  position: absolute;
+  bottom: -150px;
+}
+.list-article {
+  margin-top: 180px;
+}
+.infor {
+  position: absolute;
+  bottom: -100px;
+  left: 226px;
+  color: black;
+}
+.btn-profile {
+  position: absolute;
+  bottom: -70px;
+  right: 0;
 }

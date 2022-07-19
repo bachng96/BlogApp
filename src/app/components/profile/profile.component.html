@@ -2,27 +2,29 @@
   <div class="row py-4">
     <div class="col-12">
       <div class="bg-profile pt-5 pb-3 px-3 bg-white shadow-sm">
-        <div class="text-center">
+        <div class="text-center avatar-user">
           <img
             class="rounded-circle"
             style="border: 3px solid white"
-            width="120px"
-            height="120px"
+            width="200px"
+            height="200px"
             [src]="
               currProfile?.profile?.image.startsWith('http')
                 ? currProfile?.profile?.image
-                : 'https://static.productionready.io/images/smiley-cyrus.jpg'
+                : 'https://dbk.vn/uploads/ckfinder/images/1-content/background-dep-1.jpg'
             "
             alt=""
           />
         </div>
-        <div class="h2 mt-2 text-center font-weight-bold" style="color: white">
-          {{ currProfile?.profile?.username }}
+        <div class="infor">
+          <div class="h2 mt-2 font-weight-bold">
+            {{ currProfile?.profile?.username }}
+          </div>
+          <div class="lead">
+            <em>{{ currProfile?.profile?.bio }}</em>
+          </div>
         </div>
-        <div class="text-light text-center lead">
-          <em>{{ currProfile?.profile?.bio }}</em>
-        </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end btn-profile">
           <a
             routerLink="/setting"
             class="text-decoration-none"
@@ -92,7 +94,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container list-article">
   <div class="row">
     <div class="col">
       <ul class="nav nav-tabs text-p-dark bg-white">
