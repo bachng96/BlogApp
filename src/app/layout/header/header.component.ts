@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/new-article');
   }
 
+  goToHome() {
+    this.router.navigateByUrl('/home');
+  }
+
   goToMyArticles(): void {
     if (this.authService.isAuthenticated()) {
       let localUser = JSON.parse(localStorage.getItem('user'));
