@@ -26,6 +26,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AuthInterceptor } from './core/auth.interceptor';
+import { SpinnerComponent } from './layout/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
     FavoriteArticlesComponent,
     EditArticleComponent,
     ChangeLogComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
