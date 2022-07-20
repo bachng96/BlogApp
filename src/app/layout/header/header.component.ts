@@ -34,7 +34,9 @@ export class HeaderComponent implements OnInit {
     }
     this.router.navigateByUrl(`/profile/${this.userName}`);
   }
-
+  goToSettings(): void {
+    this.router.navigateByUrl('/setting');
+  }
   logout(): void {
     this.authService.logout();
     // this.router.navigate(['..']);

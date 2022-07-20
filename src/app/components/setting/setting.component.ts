@@ -24,7 +24,7 @@ export class SettingComponent implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private router: Router,
-    private auth: AuthService
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class SettingComponent implements OnInit {
 
     this.localUser = JSON.parse(localStorage.getItem('user'));
     console.log(this.localUser);
-    
+
     this.userName = this.localUser.username;
 
     this.settingsService.getSettings(this.userName).subscribe((res: any) => {
@@ -52,6 +52,10 @@ export class SettingComponent implements OnInit {
         username: res.profile.username,
       });
     });
+  }
+  logout(): void {
+    this.auth.logout();
+    this.router.navigateByUrl('/login');
   }
 
   updateSettings(): void {

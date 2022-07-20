@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'new-article',
@@ -44,6 +46,7 @@ const routes: Routes = [
   {
     path: 'setting',
     component: SettingComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-article/:id',

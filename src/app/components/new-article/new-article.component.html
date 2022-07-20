@@ -10,7 +10,7 @@
             >
             <input
               type="text"
-              class="form-control"
+              class="input-field"
               id="title"
               placeholder="Article title"
               formControlName="title"
@@ -39,7 +39,7 @@
             >
             <input
               type="text"
-              class="form-control"
+              class="input-field"
               id="description"
               placeholder="What's this post about?"
               formControlName="description"
@@ -68,7 +68,7 @@
             >
             <textarea
               rows="8"
-              class="form-control"
+              class="input-field"
               id="body"
               placeholder="Write your post (in markdown)"
               formControlName="body"
@@ -97,26 +97,45 @@
             >
             <input
               type="text"
-              class="form-control"
+              class="input-field"
               id="tagList"
               placeholder="Enter tags (seperate with comma)"
               formControlName="tagList"
+              required
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                newArticleForm.controls.tagList.errors?.required &&
+                newArticleForm.controls.tagList.touched
+              "
+            >
+              * Your tag list is required.
+            </small>
           </div>
+          
           <div class="text-center">
             <button
               type="button"
-              class="btn btn-outline-p-dark text-p-dark px-3 mr-2"
+              class="btn btn-outline-p-dark text-p-dark px-3 mr-2 button2"
               (click)="saveDraftArticle()"
             >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
               Save Draft
             </button>
             <button
               type="submit"
-              class="btn btn-custom bg-warning px-3 text-white"
+              class="btn btn-outline-p-dark text-p-dark px-3 mr-2 button2"
               [disabled]="newArticleForm.invalid"
               (click)="publishArticle()"
             >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
               Publish
             </button>
           </div>

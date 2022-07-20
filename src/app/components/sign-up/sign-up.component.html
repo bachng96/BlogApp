@@ -1,7 +1,117 @@
-<div class="container pb-5">
+<div class="container py-5">
   <div class="row my-4">
-    <div
-      class="col-6 mx-auto py-4 bg-white shadow"
+    <div class="flex-r login-wrapper" *ngIf="!authService.isAuthenticated()">
+      <div class="login-text">
+        <h1>Sign Up</h1>
+        <p>It's not long before you embark on this journey!</p>
+
+        <form class="flex-c" [formGroup]="signupForm">
+          <div class="input-box">
+            <span class="label">Username</span>
+            <div class="flex-r input">
+              <input
+                type="text"
+                placeholder="hoangson"
+                formControlName="username"
+                required
+              />
+              <i class="fas fa-user"></i>
+            </div>
+            <small
+              *ngIf="
+                signupForm.controls.username.invalid &&
+                signupForm.controls.username.touched
+              "
+              class="text-danger"
+              >* Username is required
+            </small>
+          </div>
+
+          <div class="input-box">
+            <span class="label">E-mail</span>
+            <div class="flex-r input">
+              <input
+                type="text"
+                placeholder="name@abc.com"
+                formControlName="email"
+              />
+              <i class="fas fa-at"></i>
+            </div>
+            <small
+              *ngIf="
+                signupForm.controls.email.invalid &&
+                signupForm.controls.email.touched
+              "
+              class="text-danger"
+            >
+              * Email is required
+            </small>
+          </div>
+
+          <div class="input-box">
+            <span class="label">Password</span>
+            <div class="flex-r input">
+              <input
+                type="password"
+                placeholder="8+ (a, A, 1, #)"
+                formControlName="password"
+              />
+              <i class="fas fa-lock"></i>
+            </div>
+            <div *ngIf="signupForm.controls.password.invalid">
+              <div>
+                <small
+                  *ngIf="signupForm.controls.password.touched"
+                  class="text-danger"
+                >
+                  * Password is required
+                </small>
+              </div>
+              <div>
+                <small
+                  *ngIf="signupForm.controls.password.errors.minlength"
+                  class="text-danger"
+                >
+                  * Min-length is 8 charaters
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="btn"
+            type="submit"
+            [disabled]="signupForm.invalid"
+            (click)="signUp()"
+          >
+            Create an Account
+          </button>
+          <span class="extra-line">
+            <span>Already have an account?</span>
+            <a routerLink="/login" class="ml-1">Sign In</a>
+          </span>
+          <div *ngIf="isInvalidInput" class="alert alert-danger mt-3 mb-0">
+            Email or Username has already been taken.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12 pt-5">
+      <div
+        *ngIf="authService.isAuthenticated()"
+        class="h3 text-center text-p-dark"
+      >
+        <span
+          >Your account has been registered. Redirecting to previous
+          page...</span
+        >
+      </div>
+    </div>
+  </div>
+  <!-- <div
+      class="col-6 py-4 bg-white shadow"
       *ngIf="!authService.isAuthenticated()"
     >
       <div class="form-wrapper" *ngIf="!authService.isAuthenticated()">
@@ -108,6 +218,5 @@
           >
         </div>
       </div>
-    </div>
-  </div>
+    </div> -->
 </div>
