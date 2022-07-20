@@ -1,94 +1,4 @@
 <div class="article-card py-4 px-3 border-bottom shadow my-3 bg-white">
-  <!-- <div class="d-flex justify-content-between align-content-center">
-    <div class="avatar d-flex">
-      <div>
-        <img
-          class="rounded-circle"
-          width="40px"
-          height="40px"
-          [src]="
-            data.author.image.startsWith('http')
-              ? data.author?.image
-              : 'https://static.productionready.io/images/smiley-cyrus.jpg'
-          "
-          alt=""
-        />
-      </div>
-      <div class="ml-3">
-        <a
-          class="mb-0 font-weight-bold text-decoration-none text-p-dark"
-          routerLink="/profile/{{ data.author?.username }}"
-          >{{ data.author?.username }}</a
-        >
-        <p class="date" style="width: 100px">{{ data.createdAt | date }}</p>
-      </div>
-    </div>
-
-    <div class="heart-button">
-      <span
-        class="btn btn-outline-p-dark align-items-center py-1 px-2"
-        *ngIf="isFavorited === false"
-        (click)="favoriteArticle(data.slug)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-heart-fill mr-1"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-          />
-        </svg>
-        <span>{{ favoritesCount }}</span>
-      </span>
-      <span
-        class="btn btn-outline-p-dark d-flex align-items-center py-1 px-2 active2"
-        *ngIf="isFavorited === true"
-        (click)="unFavoriteArticle(data.slug)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-heart-fill mr-1"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-          />
-        </svg>
-        <span>{{ favoritesCount }}</span>
-      </span>
-    </div>
-  </div>
-
-  <h4>
-    <a
-      class="text-decoration-none text-p-dark"
-      routerLink="/articles/{{ data.slug }}"
-      >{{ data.title }}</a
-    >
-  </h4>
-  <p class="mb-0">{{ data.description }}</p>
-  <a routerLink="/articles/{{ data.slug }}"
-    ><em><small class="text-warning">Read more ...</small></em></a
-  >
-  <div class="mt-4" *ngIf="tagLists.length !== 0">
-    <span *ngFor="let tag of tagLists">
-      <a
-        class="btn btn-tag m-1 py-0 rounded-pill"
-        (click)="sendTagFromCard(tag)"
-      >
-        #{{ tag }}
-      </a>
-    </span>
-  </div> -->
   <div class="container">
     <div class="row card-title">
       <div class="col-2 text-center pl-0">
@@ -107,6 +17,7 @@
             />
           </div>
         </div>
+
       </div>
       <div class="col-10 pl-0">
         <a
@@ -127,11 +38,12 @@
       </div>
     </div>
 
+
     <div class="row card-body p-0">
       <div class="col-2 text-center pl-0">
         <div class="heart-button">
           <span
-            class="btn btn-outline-p-dark align-items-center py-1 px-2"
+            class="btn btn-outline-p-dark py-1 px-2"
             *ngIf="isFavorited === false"
             (click)="favoriteArticle(data.slug)"
           >
@@ -140,7 +52,7 @@
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-heart-fill mr-1"
+              class="bi bi-heart-fill"
               viewBox="0 0 16 16"
             >
               <path
@@ -152,7 +64,7 @@
             <span>{{ favoritesCount }}</span>
           </span>
           <span
-            class="btn btn-outline-p-dark d-flex align-items-center py-1 px-2 active2"
+            class="btn btn-outline-p-dark py-1 px-2 active2 text-danger"
             *ngIf="isFavorited === true"
             (click)="unFavoriteArticle(data.slug)"
           >
@@ -161,7 +73,7 @@
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-heart-fill mr-1"
+              class="bi bi-heart-fill"
               viewBox="0 0 16 16"
             >
               <path
@@ -185,10 +97,7 @@
           </div>
           <div *ngIf="tagLists.length !== 0">
             <span *ngFor="let tag of tagLists">
-              <a
-                class="btn btn-tag m-1 py-0"
-                (click)="sendTagFromCard(tag)"
-              >
+              <a class="btn btn-tag m-1 py-0" (click)="sendTagFromCard(tag)">
                 #{{ tag }}
               </a>
             </span>
@@ -197,4 +106,5 @@
       </div>
     </div>
   </div>
+
 </div>
