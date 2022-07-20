@@ -1,8 +1,10 @@
+@import "../../style/variable";
+
 .date {
   font-size: small;
   color: #0000004d;
 }
 .btn-tag{
-  border: 1px solid #FF7E67;
-  color: #FF7E67;
+  border: 1px solid $color-primary;
+  color: $color-primary;
 }
