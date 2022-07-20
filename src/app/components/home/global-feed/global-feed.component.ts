@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ArticleService } from 'src/app/core/article.service';
 
 @Component({
@@ -14,24 +15,29 @@ export class GlobalFeedComponent implements OnInit {
   itemsPerPage: number = 6;
   loadDone: boolean = false;
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getGlobalFeed(0, this.itemsPerPage);
   }
 
   getGlobalFeed(skip: number, top: number) {
     this.articleService.getGlobalFeed(skip, top).subscribe(
       (res) => {
+        this.spinner.hide();
         this.filteredFeeds = this.globalFeeds = res.articles;
         this.totalItems = res.articlesCount;
         this.loadDone = true;
       },
-      (err) => {}
+      (err) => {
+        this.spinner.hide();
+      }
     );
   }
 
   handlePageChange(page: number) {
+    this.spinner.show();
     this.getGlobalFeed(page, this.itemsPerPage);
   }
 

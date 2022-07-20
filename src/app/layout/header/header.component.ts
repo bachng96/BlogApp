@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
@@ -11,12 +12,15 @@ export class HeaderComponent implements OnInit {
   showDropdown: boolean = false;
   userName: string = '';
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService,private spinner: NgxSpinnerService, private router: Router) {}
 
   ngOnInit(): void {}
 
   openSpinner(timeLoad) {
-    setTimeout(() => {}, timeLoad);
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, timeLoad);
   }
 
   goToNewArticle(): void {

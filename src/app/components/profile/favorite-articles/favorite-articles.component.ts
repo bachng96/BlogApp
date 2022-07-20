@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ArticleService } from 'src/app/core/article.service';
 import { MultiArticle } from 'src/app/models/multi-article';
 
@@ -14,11 +15,10 @@ export class FavoriteArticlesComponent implements OnInit {
   itemsPerPage: number = 6;
   loadDone: boolean = false;
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService, private spinner: NgxSpinnerService) {}
 
   ngOnChanges(): void {
-    console.log('run: ', this.selectedUser);
-
+    this.spinner.show();
     this.getFavoriteArticles(this.selectedUser, 0, this.itemsPerPage);
   }
   ngOnInit(): void {}
@@ -27,6 +27,7 @@ export class FavoriteArticlesComponent implements OnInit {
     this.articleService
       .getFavoriteArticles(username, skip, top)
       .subscribe((res: MultiArticle) => {
+        this.spinner.hide();
         this.favoritedArticles = res.articles;
         this.totalItems = res.articlesCount;
         this.loadDone = true;
@@ -34,6 +35,7 @@ export class FavoriteArticlesComponent implements OnInit {
   }
 
   handlePageChange(page: number) {
+    this.spinner.show();
     this.getFavoriteArticles(this.selectedUser, page, this.itemsPerPage);
   }
 }
