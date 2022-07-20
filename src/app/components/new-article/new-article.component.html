@@ -101,8 +101,19 @@
               id="tagList"
               placeholder="Enter tags (seperate with comma)"
               formControlName="tagList"
+              required
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                newArticleForm.controls.tagList.errors?.required &&
+                newArticleForm.controls.tagList.touched
+              "
+            >
+              * Your tag list is required.
+            </small>
           </div>
+          
           <div class="text-center">
             <button
               type="button"
