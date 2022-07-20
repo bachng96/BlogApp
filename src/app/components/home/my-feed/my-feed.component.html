@@ -1,5 +1,5 @@
 <ng-container *ngIf="myFeeds.length > 0; else noData">
-  <div class="container pb-5 px-0">
+  <div class="container pb-5 px-0 mb-5">
     <div *ngFor="let myFeed of myFeeds">
       <app-article-card [data]="myFeed"></app-article-card>
     </div>
