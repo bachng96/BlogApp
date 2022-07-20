@@ -16,7 +16,6 @@ import { map } from 'rxjs/operators';
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
-  // Home Screen
   getMyFeed(skip: number, top: number): Observable<MultiArticle> {
     return this.http.get(
       config.apiUrl + `/articles/feed?limit=${top}&offset=${skip}`
@@ -39,7 +38,6 @@ export class ArticleService {
     ) as Observable<MultiArticle>;
   }
 
-  // Article Details
   getArticleDetail(slug: string): Observable<any> {
     return this.http.get(
       config.apiUrl + `/articles/` + slug
@@ -63,7 +61,6 @@ export class ArticleService {
     }) as Observable<any>;
   }
 
-  // Add/Edit Article
   publishArticle(formValue: any) {
     return this.http.post(config.apiUrl + `/articles`, {
       article: {
@@ -75,7 +72,6 @@ export class ArticleService {
     });
   }
 
-  // Interact with users/articles
   followUser(userName): Observable<Profile> {
     return this.http.post(config.apiUrl + `/profiles/${userName}/follow`, {
       user: {},
@@ -101,7 +97,6 @@ export class ArticleService {
     ) as Observable<SingleArticle>;
   }
 
-  // Comments
   getComments(slug: string): Observable<MultiComment> {
     return this.http.get(
       config.apiUrl + `/articles/${slug}/comments`
@@ -120,8 +115,6 @@ export class ArticleService {
       config.apiUrl + `/articles/${slug}/comments/${id}`
     ) as Observable<SingleComment>;
   }
-
-  // Profile Screen
   getMyArticles(
     username: string,
     skip: number,

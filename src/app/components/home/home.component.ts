@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit {
   }
 
   getTagFromGlobalFeed(tagName: string) {
-    console.log(tagName);
     this.openTagFeed(tagName);
   }
 }

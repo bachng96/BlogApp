@@ -23,7 +23,6 @@ export class ArticleCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log(this.data);
     this.tagLists = this.data.tagList;
     this.isFavorited = this.data.favorited;
     this.favoritesCount = this.data.favoritesCount;
@@ -38,9 +37,7 @@ export class ArticleCardComponent implements OnInit {
       this.favoritesCount++;
       this.data.favorited = true;
       this.data.favoritesCount++;
-      this.articleService.favoriteArticle(slug).subscribe((res) => {
-        // console.log(res);
-      });
+      this.articleService.favoriteArticle(slug).subscribe((res) => {});
     }
   }
 
@@ -49,9 +46,7 @@ export class ArticleCardComponent implements OnInit {
     this.favoritesCount--;
     this.data.favorited = false;
     this.data.favoritesCount--;
-    this.articleService.unFavoriteArticle(slug).subscribe((res) => {
-      // console.log(res);
-    });
+    this.articleService.unFavoriteArticle(slug).subscribe((res) => {});
   }
 
   sendTagFromCard(tagName: string) {

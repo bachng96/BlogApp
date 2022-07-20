@@ -43,7 +43,6 @@ export class SettingComponent implements OnInit {
     });
 
     this.localUser = JSON.parse(localStorage.getItem('user'));
-    console.log(this.localUser);
 
     this.userName = this.localUser.username;
 
@@ -64,17 +63,16 @@ export class SettingComponent implements OnInit {
 
   updateSettings(): void {
     this.spinner.show();
-    // console.log(this.settingForm);
+
     this.needConfirm = true;
     this.settingsService.updateSettings(this.settingForm.value).subscribe(
       (res: any) => {
         this.isSuccess = true;
         this.isTaken = false;
         this.spinner.hide();
-        
 
         localStorage.setItem('user', JSON.stringify(res.user));
-        // console.log('setting updated');
+
         setTimeout(() => {
           this.router.navigate([`/profile/${res.user.username}`]);
         }, 5000);
@@ -83,7 +81,6 @@ export class SettingComponent implements OnInit {
         this.isSuccess = false;
         this.spinner.hide();
         this.isTaken = true;
-        // console.log('setting errors');
       }
     );
   }
