@@ -1,3 +1,4 @@
+import { LoginGuard } from './core/login.guard';
 import { ChangeLogComponent } from './components/change-log/change-log.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'articles/:id',
-    component: ArticleDetailComponent,
+    component: ArticleDetailComponent, 
   },
   {
     path: 'login',
@@ -42,6 +43,7 @@ const routes: Routes = [
   {
     path: 'new-article',
     component: NewArticleComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'setting',
@@ -51,6 +53,7 @@ const routes: Routes = [
   {
     path: 'edit-article/:id',
     component: EditArticleComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'changelogs',
