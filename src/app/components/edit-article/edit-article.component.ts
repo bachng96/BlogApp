@@ -68,17 +68,14 @@ export class EditArticleComponent implements OnInit {
   }
 
   updateArticle(): void {
-    // console.log(this.editArticleForm.value);
-
     this.articleService
       .editArticle(this.editArticleForm.value, this.slug)
       .subscribe(
         (res: any) => {
-          // ** patch value of tagList after 'arraying' it
           let tagList: string[] = [
             ...this.editArticleForm.value.tagList.split(', '),
           ];
-          // console.log(tagList);
+
           this.editArticleForm.patchValue({
             tagList: tagList,
           });
@@ -96,7 +93,6 @@ export class EditArticleComponent implements OnInit {
           }, 2000);
         },
         (err: any) => {
-          console.log(err);
           this.savedDraft = false;
           this.errorOccurs = true;
           this.isUpdated = false;

@@ -48,19 +48,16 @@ export class NewArticleComponent implements OnInit {
   }
 
   publishArticle(): void {
-    // console.log(this.newArticleForm.value);
-
     this.articleService.publishArticle(this.newArticleForm.value).subscribe(
       (res: any) => {
-        // ** patch value of tagList after 'arraying' it
         let tagList: string[] = [
           ...this.newArticleForm.value.tagList.split(', '),
         ];
-        // console.log(tagList);
+
         this.newArticleForm.patchValue({
           tagList: tagList,
         });
-        // console.log(this.newArticleForm.value);
+
         this.savedDraft = false;
         this.errorOccurs = false;
         this.isPublished = true;
@@ -75,7 +72,6 @@ export class NewArticleComponent implements OnInit {
         }, 2000);
       },
       (err: any) => {
-        // console.log(err);
         this.savedDraft = false;
         this.errorOccurs = true;
         this.isPublished = false;

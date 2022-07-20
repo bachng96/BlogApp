@@ -15,10 +15,12 @@ export class MyArticlesComponent implements OnInit {
   itemsPerPage: number = 6;
   loadDone: boolean = false;
 
-  constructor(private articleService: ArticleService, private spinner: NgxSpinnerService) {}
+  constructor(
+    private articleService: ArticleService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnChanges(): void {
-    // console.log('run: ', this.selectedUser);
     this.spinner.show();
     this.getMyArticles(this.selectedUser, 0, this.itemsPerPage);
   }

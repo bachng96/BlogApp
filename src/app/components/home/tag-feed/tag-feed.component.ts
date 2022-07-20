@@ -15,14 +15,16 @@ export class TagFeedComponent implements OnInit {
   itemsPerPage: number = 6;
   loadDone: boolean = false;
 
-  constructor(private articleService: ArticleService, private spinner: NgxSpinnerService) {}
+  constructor(
+    private articleService: ArticleService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.spinner.show();
-    // console.log(changes);
-    // console.log(changes.selectedTag.currentValue);
+
     this.getTagFeed(0, this.itemsPerPage);
   }
 

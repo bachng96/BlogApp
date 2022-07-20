@@ -55,18 +55,14 @@ export class ArticleDetailComponent implements OnInit {
     } else {
       this.follow = true;
       this.articleDetail.article.author.following = true;
-      this.articleService.followUser(userName).subscribe((res) => {
-        // console.log(res);
-      });
+      this.articleService.followUser(userName).subscribe((res) => {});
     }
   }
 
   unFollowed(userName) {
     this.follow = false;
     this.articleDetail.article.author.following = false;
-    this.articleService.unFollowUser(userName).subscribe((res) => {
-      // console.log(res);
-    });
+    this.articleService.unFollowUser(userName).subscribe((res) => {});
   }
 
   favoriteArticle(slug) {
@@ -74,9 +70,7 @@ export class ArticleDetailComponent implements OnInit {
     this.favoritesCount++;
     this.articleDetail.article.favorited = true;
     this.articleDetail.article.favoritesCount++;
-    this.articleService.favoriteArticle(slug).subscribe((res) => {
-      // console.log(res);
-    });
+    this.articleService.favoriteArticle(slug).subscribe((res) => {});
   }
 
   unFavoriteArticle(slug) {
@@ -84,9 +78,7 @@ export class ArticleDetailComponent implements OnInit {
     this.favoritesCount--;
     this.articleDetail.article.favorited = false;
     this.articleDetail.article.favoritesCount--;
-    this.articleService.unFavoriteArticle(slug).subscribe((res) => {
-      // console.log(res);
-    });
+    this.articleService.unFavoriteArticle(slug).subscribe((res) => {});
   }
 
   deleteArticle(slug, userName) {
