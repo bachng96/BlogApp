@@ -223,10 +223,13 @@
             class="form-control"
             placeholder="Write a comment..."
             [(ngModel)]="textComment"
+            (keyup.enter)="
+              addComment(articleDetail?.article?.slug, textComment)
+            "
           />
           <div class="input-group-append">
             <button
-              class="btn btn-hover bg-p-dark text-white"
+              class="btn btn-primary"
               (click)="addComment(articleDetail?.article?.slug, textComment)"
             >
               Post Comment

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from 'src/app/core/settings.service';
 import { AuthService } from 'src/app/core/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-setting',
@@ -24,10 +25,12 @@ export class SettingComponent implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private router: Router,
-    public auth: AuthService
+    public auth: AuthService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     this.settingForm = new FormGroup({
       image: new FormControl(''),
       username: new FormControl('', [
@@ -45,6 +48,7 @@ export class SettingComponent implements OnInit {
     this.userName = this.localUser.username;
 
     this.settingsService.getSettings(this.userName).subscribe((res: any) => {
+      this.spinner.hide();
       this.settingForm.setValue({
         email: this.localUser.email,
         bio: res.profile.bio,
@@ -59,13 +63,15 @@ export class SettingComponent implements OnInit {
   }
 
   updateSettings(): void {
+    this.spinner.show();
     // console.log(this.settingForm);
     this.needConfirm = true;
     this.settingsService.updateSettings(this.settingForm.value).subscribe(
       (res: any) => {
         this.isSuccess = true;
         this.isTaken = false;
-        console.log(res);
+        this.spinner.hide();
+        
 
         localStorage.setItem('user', JSON.stringify(res.user));
         // console.log('setting updated');
@@ -75,9 +81,9 @@ export class SettingComponent implements OnInit {
       },
       (err: any) => {
         this.isSuccess = false;
+        this.spinner.hide();
         this.isTaken = true;
         // console.log('setting errors');
-        console.log(err);
       }
     );
   }

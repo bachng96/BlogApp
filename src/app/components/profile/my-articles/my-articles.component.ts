@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ArticleService } from 'src/app/core/article.service';
 import { MultiArticle } from 'src/app/models/multi-article';
 
@@ -14,10 +15,11 @@ export class MyArticlesComponent implements OnInit {
   itemsPerPage: number = 6;
   loadDone: boolean = false;
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService, private spinner: NgxSpinnerService) {}
 
   ngOnChanges(): void {
     // console.log('run: ', this.selectedUser);
+    this.spinner.show();
     this.getMyArticles(this.selectedUser, 0, this.itemsPerPage);
   }
 
@@ -27,6 +29,7 @@ export class MyArticlesComponent implements OnInit {
     this.articleService
       .getMyArticles(username, skip, top)
       .subscribe((res: MultiArticle) => {
+        this.spinner.hide();
         this.myArticles = res.articles;
         this.totalItems = res.articlesCount;
         this.loadDone = true;
