@@ -46,11 +46,15 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   followed(userName) {
-    this.follow = true;
-    this.articleDetail.article.author.following = true;
-    this.articleService.followUser(userName).subscribe((res) => {
-      // console.log(res);
-    });
+    if(!this.authService.isAuthenticated()) {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.follow = true;
+      this.articleDetail.article.author.following = true;
+      this.articleService.followUser(userName).subscribe((res) => {
+        // console.log(res);
+      });
+    }
   }
 
   unFollowed(userName) {

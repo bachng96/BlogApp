@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { switchMap } from 'rxjs/operators';
 import { ArticleService } from 'src/app/core/article.service';
@@ -25,10 +26,12 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     if (this.authService.isAuthenticated()) {
       let localUser = JSON.parse(localStorage.getItem('user'));
       this.userName = localUser.username;
@@ -42,7 +45,6 @@ export class ProfileComponent implements OnInit {
         })
       )
       .subscribe((res: any) => {
-        console.log(res);
         this.currProfile = res;
         this.follow = res.profile.following;
         this.currUsername = res.profile.username;

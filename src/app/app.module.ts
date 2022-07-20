@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleCardComponent } from './layout/article-card/article-card.component';
@@ -59,6 +59,7 @@ import { SpinnerComponent } from './layout/spinner/spinner.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxSpinnerModule,
   ],
   providers: [
     {

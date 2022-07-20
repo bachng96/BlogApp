@@ -25,15 +25,19 @@ const routes: Routes = [
   },
   {
     path: 'articles/:id',
-    component: ArticleDetailComponent, 
+    component: ArticleDetailComponent,
+    canActivate: [AuthGuard],
+
   },
   {
     path: 'login',
     component: LoginComponent,
+    
   },
   {
     path: 'signup',
     component: SignUpComponent,
+    
   },
   {
     path: 'profile/:id',

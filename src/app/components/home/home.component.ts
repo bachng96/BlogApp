@@ -1,4 +1,5 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ArticleService } from 'src/app/core/article.service';
 import { AuthService } from 'src/app/core/auth.service';
 
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    public authService: AuthService
+    public authService: AuthService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +30,10 @@ export class HomeComponent implements OnInit {
   }
 
   openSpinner(timeLoad) {
-    setTimeout(() => {}, timeLoad);
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, timeLoad);
   }
 
   myFeedMode() {
