@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ArticleService } from 'src/app/core/article.service';
 
 @Component({
@@ -17,9 +18,14 @@ export class EditArticleComponent implements OnInit {
   errorOccurs: boolean = false;
   draftArticle: any = {};
 
-  constructor(private articleService: ArticleService, private router: Router) {}
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     this.editArticleForm = new FormGroup({
       title: new FormControl('', [
         Validators.required,
@@ -50,6 +56,7 @@ export class EditArticleComponent implements OnInit {
     } else {
       // ** Load content from Server
       this.articleService.getArticleDetail(this.slug).subscribe((res: any) => {
+        this.spinner.hide();
         this.editArticleForm.setValue({
           title: res.article.title,
           description: res.article.description,
