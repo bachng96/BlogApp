@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       let localUser = JSON.parse(localStorage.getItem('user'));
       this.userName = localUser.username;
-      // console.log(this.userName);
     }
 
     this.route.params
@@ -43,8 +42,7 @@ export class ProfileComponent implements OnInit {
         })
       )
       .subscribe((res: any) => {
-        // console.log(res);
-
+        console.log(res);
         this.currProfile = res;
         this.follow = res.profile.following;
         this.currUsername = res.profile.username;
@@ -53,13 +51,6 @@ export class ProfileComponent implements OnInit {
           : 'https://static.productionready.io/images/smiley-cyrus.jpg';
       });
   }
-
-  // openSpinner(timeLoad) {
-  //   this.spinner.show();
-  //   setTimeout(() => {
-  //     this.spinner.hide();
-  //   }, timeLoad);
-  // }
 
   switchTab(): void {
     this.onSelected = !this.onSelected;
@@ -71,13 +62,11 @@ export class ProfileComponent implements OnInit {
 
   followed(userName) {
     this.follow = true;
-    // this.articleDetail.article.author.following = true;
     this.articleService.followUser(userName).subscribe((res) => {});
   }
 
   unFollowed(userName) {
     this.follow = false;
-    // this.articleDetail.article.author.following = false;
     this.articleService.unFollowUser(userName).subscribe((res) => {});
   }
 }
