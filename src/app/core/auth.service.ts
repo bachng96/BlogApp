@@ -68,6 +68,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
-    window.location.reload()
+    this.router.navigateByUrl('/home')
   }
 }
